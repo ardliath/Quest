@@ -43,8 +43,12 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="BasicInjection.cs" />
     <Compile Include="TestClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThingsToTest\Calculator.cs" />
+    <Compile Include="ThingsToTest\DataAccess.cs" />
+    <Compile Include="ThingsToTest\IDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Liath.Quest\Liath.Quest.csproj">

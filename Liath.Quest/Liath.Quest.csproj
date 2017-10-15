@@ -45,6 +45,7 @@
     </Compile>
     <Compile Include="Assert.cs" />
     <Compile Include="AssertionException.cs" />
+    <Compile Include="Create.cs" />
     <Compile Include="ExpectedExceptionAttribute.cs" />
     <Compile Include="TestAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
