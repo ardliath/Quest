@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liath.Quest", "Liath.Quest\Liath.Quest.csproj", "{D0B40809-CE86-41A5-B3D7-CC9194943CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liath.Quest.Tests", "Liath.Quest.Tests\Liath.Quest.Tests.csproj", "{3BC69C20-77DA-40DD-87B8-588A141EC7A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liath.Quest.TestRunner", "Liath.Quest.TestRunner\Liath.Quest.TestRunner.csproj", "{6876F666-CE4F-4DFA-89B2-965D3B6C7CFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Liath.Quest.TestRunnerUI", "Liath.Quest.TestRunnerUI\Liath.Quest.TestRunnerUI.csproj", "{6876F666-CE4F-4DFA-89B2-965D3B6C7CFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

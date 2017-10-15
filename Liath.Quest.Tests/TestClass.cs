@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest.Tests
 {
-  public class TestClass
-  {
-    [Test]
-    [ExpectedException(typeof(AssertionException))]
-    public void Fail_should_throw_AssertException()
+    public class TestClass
     {
-      Assert.Fail();
+        [Test]
+        [ExpectedException(typeof(AssertionException))]
+        public void Fail_should_throw_AssertException()
+        {
+            Assert.Fail();
+        }
+
+        [Test]
+        public void Pass_should_pass()
+        {
+            Assert.Pass();
+        }
+
+        public void NotATest()
+        {
+
+        }
     }
-  }
 }

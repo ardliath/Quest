@@ -12,5 +12,10 @@ namespace Liath.Quest
     {
       throw new AssertionException();
     }
+
+    public static void Pass()
+    {
+      
+    }
   }
 }
