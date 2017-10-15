@@ -28,61 +28,33 @@ namespace Liath.Quest
             var className = typeof(T).FullName + "Mock";
             TypeBuilder typeBuilder = moduleBuilder.DefineType(className, TypeAttributes.Public);
 
-            foreach(var method in typeof(T).GetMethods())
+            foreach (var methodToMock in typeof(T).GetMethods())
             {
-                //var methodBuilder = typeBuilder.DefineMethod(method.Name, 
-                //    MethodAttributes.Public, 
-                //    CallingConventions.Any, 
-                //    method.ReturnType, 
-                //    method.GetParameters().Select(p => p.ParameterType).ToArray());
+                MethodBuilder myHelloMethod = typeBuilder.DefineMethod(methodToMock.Name,
+                        MethodAttributes.Public | MethodAttributes.Virtual,
+                        methodToMock.ReturnType,
+                        methodToMock.GetParameters().Select(p => p.ParameterType).ToArray());
 
-                //// https://stackoverflow.com/questions/7671220/creating-method-dynamically-and-executing-it
-                //var methodBody = typeof(Create).GetMethod("EmptyMethod").GetMethodBody();
-                //var il = methodBody.GetILAsByteArray();
-
-    //            typeof(Create)
-    //.GetField("m_localSignature", BindingFlags.NonPublic | BindingFlags.Instance)
-    //.SetValue(methodBody, typeof(Create).Module.ResolveSignature(methodBody.LocalSignatureMetadataToken));
-
-    //            methodBuilder.SetMethodBody(il,
-    //                methodBody.MaxStackSize,
-    //                typeof(Create).Module.ResolveSignature(methodBody.LocalSignatureMetadataToken),
-    //                null,
-    //                null);
-
-
-                ////https://stackoverflow.com/questions/4460859/methodbuilder-createmethodbody-problem-in-dynamic-type-creation
-                //var ILcodes = methodBody.GetILAsByteArray();
-                //var ilGen = methodBuilder.GetILGenerator();
-                //methodBuilder.CreateMethodBody(ILcodes, ILcodes.Length);
-
-                ////methodBuilder.CreateMethodBody(il, methodBody.MaxStackSize);
+            https://msdn.microsoft.com/en-us/library/4775a47y(v=vs.110).aspx
+                // Generate IL for 'GetGreeting' method.
+                ILGenerator myMethodIL = myHelloMethod.GetILGenerator();
+                myMethodIL.Emit(OpCodes.Ldstr, "Hello ");
+                myMethodIL.Emit(OpCodes.Ldstr, "World!");
+                MethodInfo emptyMethod = typeof(String).GetMethod("Concat", new Type[] { typeof(string), typeof(string) });
+                myMethodIL.Emit(OpCodes.Call, emptyMethod);
+                if (methodToMock.ReturnType != typeof(void))
+                {
+                    myMethodIL.Emit(OpCodes.Ret);
+                }
             }
-
-            //typeBuilder.AddInterfaceImplementation(typeof(T));
-
-
-            MethodBuilder myHelloMethod = typeBuilder.DefineMethod("HelloMethod",
-                    MethodAttributes.Public | MethodAttributes.Virtual,
-                    typeof(String), 
-                    new Type[] { typeof(String) });
-
-        https://msdn.microsoft.com/en-us/library/4775a47y(v=vs.110).aspx
-            // Generate IL for 'GetGreeting' method.
-            ILGenerator myMethodIL = myHelloMethod.GetILGenerator();
-            myMethodIL.Emit(OpCodes.Ldstr, "Hi!");
-            myMethodIL.Emit(OpCodes.Ldarg_1);
-            MethodInfo infoMethod = typeof(String).GetMethod("Concat", new Type[] { typeof(string), typeof(string) });
-            myMethodIL.Emit(OpCodes.Call, infoMethod);
-            myMethodIL.Emit(OpCodes.Ret);
-
-            var theType = typeBuilder.CreateType();
-            var instance = Activator.CreateInstance(theType);
-            var returnValue = theType.GetMethod("HelloMethod").Invoke(instance, new string[] { "Adam"});
-
-            return (T)Activator.CreateInstance(typeBuilder.CreateType());
-
+            
+            typeBuilder.AddInterfaceImplementation(typeof(T));
+            //var theType = typeBuilder.CreateType();
+            //var instance = Activator.CreateInstance(theType);
+            //var returnValue = theType.GetMethod("HelloMethod").Invoke(instance, new string[] { "Adam" });
             //typeBuilder.SetParent(typeof(T));            
+
+            return (T)Activator.CreateInstance(typeBuilder.CreateType());            
         }
 
 

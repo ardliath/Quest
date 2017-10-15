@@ -7,6 +7,7 @@ namespace Liath.Quest.Tests.ThingsToTest
 {
     public interface IDataAccess
     {
-        void Save(int value);
+        string Save(int value);
+        void DoSomething(int value);
     }
 }
