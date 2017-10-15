@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest.TestRunnerUI
 {
-    class Program
+    /// <summary>
+    /// Simple Console UI for the TestRunner
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {
