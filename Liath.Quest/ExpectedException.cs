@@ -8,11 +8,11 @@ namespace Liath.Quest
 {
   public class ExpectedExceptionAttribute : Attribute
   {
-    private Type _exceptionType;
+      public Type ExpectedExceptionType { get; set; }
 
     public ExpectedExceptionAttribute(Type exceptionType)
     {
-      _exceptionType = exceptionType;
+        this.ExpectedExceptionType = exceptionType;
     }
   }
 }
