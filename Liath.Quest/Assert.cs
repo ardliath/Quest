@@ -6,16 +6,25 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest
 {
-  public class Assert
-  {
-    public static void Fail()
+    /// <summary>
+    /// Handles Assertions
+    /// </summary>
+    public class Assert
     {
-      throw new AssertionException();
-    }
+        /// <summary>
+        /// Marks the test as failed
+        /// </summary>
+        public static void Fail()
+        {
+            throw new AssertionException();
+        }
 
-    public static void Pass()
-    {
-      
+        /// <summary>
+        /// Marks the test as passing
+        /// </summary>
+        public static void Pass()
+        {
+            // in otherwords - don't throw an exception
+        }
     }
-  }
 }
