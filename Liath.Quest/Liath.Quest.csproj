@@ -43,6 +43,9 @@
     <Compile Include="..\VersionInfo.cs">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="Assert.cs" />
+    <Compile Include="AssertionException.cs" />
+    <Compile Include="ExpectedException.cs" />
     <Compile Include="TestAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

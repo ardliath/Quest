@@ -9,9 +9,10 @@ namespace Liath.Quest.Tests
   public class TestClass
   {
     [Test]
-    public void MyFirstTest()
+    [ExpectedException(typeof(AssertionException))]
+    public void Fail_should_throw_AssertException()
     {
-      throw new NotImplementedException();
+      Assert.Fail();
     }
   }
 }
