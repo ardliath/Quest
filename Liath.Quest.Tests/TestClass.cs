@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest.Tests
 {
-    public class Class1
+  public class TestClass
+  {
+    [Test]
+    public void MyFirstTest()
     {
+      throw new NotImplementedException();
     }
+  }
 }

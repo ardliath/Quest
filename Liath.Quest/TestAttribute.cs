@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest
 {
-    public class Class1
+    public class TestAttribute : Attribute
     {
     }
 }
