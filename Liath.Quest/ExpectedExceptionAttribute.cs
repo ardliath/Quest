@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace Liath.Quest
 {
-  public class ExpectedExceptionAttribute : Attribute
-  {
-      public Type ExpectedExceptionType { get; set; }
-
-    public ExpectedExceptionAttribute(Type exceptionType)
+    /// <summary>
+    /// The attribute which marks a test as passing when an exception is thrown
+    /// </summary>
+    public class ExpectedExceptionAttribute : Attribute
     {
-        this.ExpectedExceptionType = exceptionType;
+        /// <summary>
+        /// The type of exception which we expection to be thrown
+        /// </summary>
+        public Type ExpectedExceptionType { get; set; }
+
+        public ExpectedExceptionAttribute(Type exceptionType)
+        {
+            this.ExpectedExceptionType = exceptionType;
+        }
     }
-  }
 }
