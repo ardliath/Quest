@@ -9,8 +9,9 @@ namespace Liath.Quest
 {
   public class TestRunner
   {
-      public object RunAllTests(string testPath)
+      public TestResults RunAllTests(string testPath)
       {
+          var results = new List<TestResult>();
           var assembly = Assembly.LoadFrom(testPath);
           foreach(var clazz in assembly.GetTypes())
           {
@@ -18,17 +19,28 @@ namespace Liath.Quest
               {
                   if(test.GetCustomAttribute<TestAttribute>() != null)
                   {
-                      this.RunTest(test);
+                      var testClass = Activator.CreateInstance(clazz);
+                      var result = this.RunTest(testClass, test);
+                      results.Add(result);
                   }
               }
           }
 
-          return new object();
+          return new TestResults(results);
       }
 
-      private void RunTest(MethodInfo test)
+      private TestResult RunTest(object testClass, MethodInfo test)
       {
-          
+          try
+          {
+              test.Invoke(testClass, new object[]{});
+          }
+          catch(Exception ex)
+          {
+              return new TestResult(false, test, ex);
+          }
+
+          return new TestResult(true, test);
       }
   }
 }

@@ -15,6 +15,11 @@ namespace Liath.Quest.TestRunnerUI
             var rootFolder = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.Parent.Parent.FullName;
             var testPath = Path.Combine(rootFolder, @"Liath.Quest.Tests\bin\Debug\Liath.Quest.Tests.dll");
             var results = testRunner.RunAllTests(testPath);
+            foreach(var result in results.Results)
+            {
+                Console.WriteLine(result);
+            }
+            Console.ReadKey();
         }
     }
 }
